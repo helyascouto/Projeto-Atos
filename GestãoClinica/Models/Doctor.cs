@@ -7,17 +7,31 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace GestãoClinica.Models
 {
     [Table("Doctor")]
-    public class Doctor : EntityBase
+    public class Doctor : Address
     {
+        public Doctor()
+        {
+
+        }
+        public Doctor(long crm, long cpf, string fistName, string lastName, DateTime dateBirth)
+        {
+            CRM = crm;
+            CPF = cpf;
+            FistName = fistName;
+            LastName = lastName;
+            DateBirth = dateBirth;
+        }
+
+
 
         [Display(Name = "CRM")]
-        public Int64? CRM { get; set; }
+        public Int64 CRM { get; set; }
 
         [Required(ErrorMessage = "O CPF é Obrigatório!")]
         [Display(Name = "CPF")]
-        [RegularExpression(
-          @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
-          ErrorMessage = "Informe um CPF válido!")]
+        //[RegularExpression(
+        //  @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
+        //  ErrorMessage = "Informe um CPF válido!")]
         public Int64 CPF { get; set; }
 
         [Required(ErrorMessage = "O Nome é Obrigatório!")]
@@ -38,13 +52,6 @@ namespace GestãoClinica.Models
         [Required(ErrorMessage = "O Data de Nascimento é Obrigatório!")]
         [Display(Name = "Data de Nascimento")]
         public DateTime DateBirth { get; set; }
-
-        //[ForeignKey("Address")]
-        //public int IdAddress { get; set; }
-
-        [Required(ErrorMessage = "Endereço é Obrigatório!")]
-        [Display(Name = "Endereço")]
-        public virtual Address? Address { get; set; }
 
 
     }

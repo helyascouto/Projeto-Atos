@@ -6,9 +6,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace GestãoClinica.Models
 {
     [Table("Address")]
-    public class Address : EntityBase
+    public abstract class Address : EntityBase
 
     {
+        public Address()
+        {
+
+        }
+        protected Address(long telephone, string email, string zipCod, string number, string district, string city, string state)
+        {
+            Telephone = telephone;
+            Email = email;
+            ZipCod = zipCod;
+            Number = number;
+            District = district;
+            City = city;
+            State = state;
+        }
 
         [Required(ErrorMessage = "O Telefone é Obrigatório!")]
         [Display(Name = "Telefone")]
@@ -29,16 +43,20 @@ namespace GestãoClinica.Models
            ErrorMessage = "Informe um Cep válido!")]
         public string ZipCod { get; set; }
 
+        [Display(Name = "Numero")]
         [Required(ErrorMessage = "O Numero é Obrigatório!")]
         public string Number { get; set; }
 
+        [Display(Name = "Bairro")]
         [Required(ErrorMessage = "O Bairro é Obrigatório!")]
         public string District { get; set; }
 
+        [Display(Name = "Cidade")]
         [Required(ErrorMessage = "O Cidade é Obrigatório!")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "O Uf é Obrigatório!")]
+        [Display(Name = "Estado")]
+        [Required(ErrorMessage = "O Estado é Obrigatório!")]
         public string State { get; set; }
 
 

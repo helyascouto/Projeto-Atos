@@ -21,7 +21,8 @@ namespace GestãoClinica.Controllers
         // GET: Patients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Patient.ToListAsync());
+            var contexo = _context.Patient.Include(p => p.HealthPlan);
+            return View(await contexo.ToListAsync());
         }
 
         // GET: Patients/Details/5
@@ -33,6 +34,7 @@ namespace GestãoClinica.Controllers
             }
 
             var patient = await _context.Patient
+                .Include(p => p.HealthPlan)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (patient == null)
             {
@@ -45,6 +47,7 @@ namespace GestãoClinica.Controllers
         // GET: Patients/Create
         public IActionResult Create()
         {
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City");
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace GestãoClinica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CPF,FistName,LastName,DateBirth,Id,Ativo,DateRegister")] Patient patient)
+        public async Task<IActionResult> Create([Bind("CPF,FistName,LastName,DateBirth,IdHealthPlan,IdCompany,Telephone,Email,ZipCod,Number,District,City,State,Id,SetAtivo,SetDateRegister")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace GestãoClinica.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patient.IdHealthPlan);
             return View(patient);
         }
 
@@ -77,6 +81,7 @@ namespace GestãoClinica.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patient.IdHealthPlan);
             return View(patient);
         }
 
@@ -85,7 +90,7 @@ namespace GestãoClinica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CPF,FistName,LastName,DateBirth,Id,Ativo,DateRegister")] Patient patient)
+        public async Task<IActionResult> Edit(int id, [Bind("CPF,FistName,LastName,DateBirth,IdHealthPlan,IdCompany,Telephone,Email,ZipCod,Number,District,City,State,Id,SetAtivo,SetDateRegister")] Patient patient)
         {
             if (id != patient.Id)
             {
@@ -112,6 +117,7 @@ namespace GestãoClinica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patient.IdHealthPlan);
             return View(patient);
         }
 
@@ -124,6 +130,7 @@ namespace GestãoClinica.Controllers
             }
 
             var patient = await _context.Patient
+                .Include(p => p.HealthPlan)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (patient == null)
             {

@@ -26,10 +26,37 @@
                 @Html.DisplayNameFor(model => model.DateBirth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ativo)
+                @Html.DisplayNameFor(model => model.HealthPlan)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateRegister)
+                @Html.DisplayNameFor(model => model.IdCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZipCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SetAtivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SetDateRegister)
             </th>
             <th></th>
         </tr>
@@ -50,10 +77,37 @@
                 @Html.DisplayFor(modelItem => item.DateBirth)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ativo)
+                @Html.DisplayFor(modelItem => item.HealthPlan.City)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateRegister)
+                @Html.DisplayFor(modelItem => item.IdCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetAtivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetDateRegister)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

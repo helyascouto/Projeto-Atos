@@ -17,17 +17,10 @@ namespace GestãoClinica.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=localhost; initial Catalog=Db_AcademiaDotNet; User ID=usuario;password=senha;language=Portuguese;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(@"Data Source=localhost; initial Catalog=Db_GestaoClinica; User ID=usuario;password=senha;language=Portuguese;Trusted_Connection=True");
             optionsBuilder.UseLazyLoadingProxies();
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Email>()
-        //        .HasOne(e => e.pessoa)// relação 1 para 1
-        //        .WithMany(p => p.emails) //relação 1 para muitos
-        //        .OnDelete(DeleteBehavior.ClientCascade);
-        //}
 
         public DbSet<Address> addresses { get; set; }
         public DbSet<Company> companies { get; set; }
@@ -35,12 +28,8 @@ namespace GestãoClinica.Models
         public DbSet<Exams> exams { get; set; }
         public DbSet<HealthPlan> healthPlans { get; set; }
         public DbSet<PeriodicConsultation> periodicConsultations { get; set; }
-        public DbSet<GestãoClinica.Models.Patient> Patient { get; set; }
+        public DbSet<Patient> Patient { get; set; }
 
-
-
-        //EntityFrameworkCore\Add-Migration Inicial
-        //EntityFrameworkCore\Update-Database
     }
 }
 

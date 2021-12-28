@@ -6,8 +6,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace GestãoClinica.Models
 {
     [Table("Company")]
-    public class Company : EntityBase
+    public class Company : Address
     {
+        public Company()
+        {
+
+        }
+        public Company(string nameCompany, long cNPJ)
+        {
+            NameCompany = nameCompany;
+            CNPJ = cNPJ;
+        }
 
         [Required(ErrorMessage = "O Nome é Obrigatório!")]
         [Display(Name = "Empresa")]
@@ -17,19 +26,13 @@ namespace GestãoClinica.Models
         public string NameCompany { get; set; }
 
 
-        [Required(ErrorMessage = "O CNPJ é Obrigatório!")]
+        // [Required(ErrorMessage = "O CNPJ é Obrigatório!")]
         [Display(Name = "CNPJ")]
-        [RegularExpression(
-           @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
-           ErrorMessage = "Informe um CNPJ válido!")]
-        public Int64 CNPJ { get; set; }
+        //[RegularExpression(
+        //   @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
+        //   ErrorMessage = "Informe um CNPJ válido!")]
+        public Int64? CNPJ { get; set; }
 
-        //[ForeignKey("Address")]
-        //public int IdAddress { get; set; }
-
-        [Required(ErrorMessage = "Endereço é Obrigatório!")]
-        [Display(Name = "Endereço")]
-        public virtual Address? Address { get; set; }
 
     }
 }
