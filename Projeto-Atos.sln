@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto-Atos", "Projeto-Atos\Projeto-Atos.csproj", "{10A42822-D2A4-478D-A209-A3061C617D6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestãoClinica", "GestãoClinica\GestãoClinica.csproj", "{4D88EB98-6F03-4B27-B364-E1A9CA7131F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{10A42822-D2A4-478D-A209-A3061C617D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10A42822-D2A4-478D-A209-A3061C617D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10A42822-D2A4-478D-A209-A3061C617D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10A42822-D2A4-478D-A209-A3061C617D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D88EB98-6F03-4B27-B364-E1A9CA7131F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D88EB98-6F03-4B27-B364-E1A9CA7131F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D88EB98-6F03-4B27-B364-E1A9CA7131F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D88EB98-6F03-4B27-B364-E1A9CA7131F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
