@@ -10,29 +10,13 @@ namespace GestãoClinica.Models
 
         }
 
-        protected EntityBase(int id, DateTime dateRegister, bool ativo)
-        {
-            Id = id;
-            DateRegister = dateRegister;
-            Ativo = ativo;
-        }
+       
 
         [Key]
         public int Id { get; set; }
-        private DateTime DateRegister;
-        private bool Ativo;
 
-        public bool SetAtivo
-        {
-            get { return Ativo; }
-            set { Ativo = true; }
-        }
-
-        public DateTime SetDateRegister
-        {
-            get { return DateRegister; }
-            set { DateRegister = DateTime.Now; }
-        }
+        [Display(Name = "Data de regidtro")]
+        public DateTime DateRegister { get => DateTime.Now; }
 
 
     }

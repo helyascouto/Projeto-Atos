@@ -28,8 +28,8 @@ namespace GestãoClinica.Models
         public DbSet<Exams> exams { get; set; }
         public DbSet<HealthPlan> healthPlans { get; set; }
         public DbSet<PeriodicConsultation> periodicConsultations { get; set; }
-        public DbSet<Patient> Patient { get; set; }
-
+        public DbSet<Patient> patients { get; set; }
+        public DbSet<ListExams> listExams { get; set; }
     }
 }
 

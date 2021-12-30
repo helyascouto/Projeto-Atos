@@ -53,7 +53,7 @@ namespace GestãoClinica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,Number,District,City,State,Id,SetAtivo,SetDateRegister")] HealthPlan healthPlan)
+        public async Task<IActionResult> Create([Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,Number,District,City,State,Id")] HealthPlan healthPlan)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace GestãoClinica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,Number,District,City,State,Id,SetAtivo,SetDateRegister")] HealthPlan healthPlan)
+        public async Task<IActionResult> Edit(int id, [Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,Number,District,City,State,Id")] HealthPlan healthPlan)
         {
             if (id != healthPlan.Id)
             {

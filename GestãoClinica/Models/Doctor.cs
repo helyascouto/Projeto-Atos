@@ -25,7 +25,7 @@ namespace GestãoClinica.Models
 
 
         [Display(Name = "CRM")]
-        public Int64 CRM { get; set; }
+        public Int64? CRM { get; set; }
 
         [Required(ErrorMessage = "O CPF é Obrigatório!")]
         [Display(Name = "CPF")]

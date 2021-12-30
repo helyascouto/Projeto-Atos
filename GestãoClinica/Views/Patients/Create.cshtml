@@ -39,8 +39,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdCompany" class="control-label"></label>
-                <input asp-for="IdCompany" class="form-control" />
-                <span asp-validation-for="IdCompany" class="text-danger"></span>
+                <select asp-for="IdCompany" class ="form-control" asp-items="ViewBag.IdCompany"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Telephone" class="control-label"></label>
@@ -76,16 +75,6 @@
                 <label asp-for="State" class="control-label"></label>
                 <input asp-for="State" class="form-control" />
                 <span asp-validation-for="State" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="SetAtivo" /> @Html.DisplayNameFor(model => model.SetAtivo)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="SetDateRegister" class="control-label"></label>
-                <input asp-for="SetDateRegister" class="form-control" />
-                <span asp-validation-for="SetDateRegister" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

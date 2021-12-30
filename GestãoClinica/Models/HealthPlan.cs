@@ -14,7 +14,5 @@ namespace GestãoClinica.Models
 
         }
 
-
-        
     }
 }

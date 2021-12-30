@@ -12,10 +12,10 @@ namespace GestãoClinica.Models
         {
 
         }
-        public Company(string nameCompany, long cNPJ)
+        public Company(string nameCompany, long cnpj)
         {
             NameCompany = nameCompany;
-            CNPJ = cNPJ;
+            CNPJ = cnpj;
         }
 
         [Required(ErrorMessage = "O Nome é Obrigatório!")]
@@ -26,12 +26,12 @@ namespace GestãoClinica.Models
         public string NameCompany { get; set; }
 
 
-        // [Required(ErrorMessage = "O CNPJ é Obrigatório!")]
+        [Required(ErrorMessage = "O CNPJ é Obrigatório!")]
         [Display(Name = "CNPJ")]
         //[RegularExpression(
         //   @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
         //   ErrorMessage = "Informe um CNPJ válido!")]
-        public Int64? CNPJ { get; set; }
+        public Int64 CNPJ { get; set; }
 
 
     }
