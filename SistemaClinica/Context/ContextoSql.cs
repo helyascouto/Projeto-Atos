@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaClinica.Models;
 
-namespace SistemaClinica.Data
+namespace SistemaClinica.Context
 {
     public class ContextoSql : IdentityDbContext
     {

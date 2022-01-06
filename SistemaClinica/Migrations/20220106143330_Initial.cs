@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SistemaClinica.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -246,7 +246,7 @@ namespace SistemaClinica.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    CPF = table.Column<long>(type: "bigint", nullable: false),
+                    CPF = table.Column<long>(type: "bigint", nullable: true),
                     FistName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     DateBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -285,8 +285,7 @@ namespace SistemaClinica.Migrations
                     IdDoctor = table.Column<int>(type: "int", nullable: false),
                     IdCompany = table.Column<int>(type: "int", nullable: false),
                     IdExams = table.Column<int>(type: "int", nullable: false),
-                    DateQuery = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Ativo = table.Column<bool>(type: "bit", nullable: false)
+                    DateQuery = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -323,28 +322,29 @@ namespace SistemaClinica.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PatientId = table.Column<int>(type: "int", nullable: false),
-                    ExamsId = table.Column<int>(type: "int", nullable: false),
-                    PeriodicConsultationId = table.Column<int>(type: "int", nullable: false)
+                    IdPatient = table.Column<int>(type: "int", nullable: false),
+                    IdExams = table.Column<int>(type: "int", nullable: false),
+                    IdIdExams = table.Column<int>(type: "int", nullable: false),
+                    IdPeriodicConsultation = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ListExams", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ListExams_Exams_ExamsId",
-                        column: x => x.ExamsId,
+                        name: "FK_ListExams_Exams_IdIdExams",
+                        column: x => x.IdIdExams,
                         principalTable: "Exams",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ListExams_Patients_PatientId",
-                        column: x => x.PatientId,
+                        name: "FK_ListExams_Patients_IdPatient",
+                        column: x => x.IdPatient,
                         principalTable: "Patients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ListExams_PeriodicConsultation_PeriodicConsultationId",
-                        column: x => x.PeriodicConsultationId,
+                        name: "FK_ListExams_PeriodicConsultation_IdPeriodicConsultation",
+                        column: x => x.IdPeriodicConsultation,
                         principalTable: "PeriodicConsultation",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -390,19 +390,19 @@ namespace SistemaClinica.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ListExams_ExamsId",
+                name: "IX_ListExams_IdIdExams",
                 table: "ListExams",
-                column: "ExamsId");
+                column: "IdIdExams");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ListExams_PatientId",
+                name: "IX_ListExams_IdPatient",
                 table: "ListExams",
-                column: "PatientId");
+                column: "IdPatient");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ListExams_PeriodicConsultationId",
+                name: "IX_ListExams_IdPeriodicConsultation",
                 table: "ListExams",
-                column: "PeriodicConsultationId");
+                column: "IdPeriodicConsultation");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Patients_IdCompany",

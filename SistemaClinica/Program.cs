@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Components.Authorization;
-using SistemaClinica.Data;
-
+using SistemaClinica.Context;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

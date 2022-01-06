@@ -7,22 +7,22 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SistemaClinica.Data;
+using SistemaClinica.Context;
 using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
 {
     [Authorize]
-    public class PeriodicConsultationsController : Controller
+    public class PeriodicConsultationController : Controller
     {
         private readonly ContextoSql _context;
 
-        public PeriodicConsultationsController(ContextoSql context)
+        public PeriodicConsultationController(ContextoSql context)
         {
             _context = context;
         }
 
-        // GET: PeriodicConsultations
+        // GET: PeriodicConsultation
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -30,7 +30,7 @@ namespace SistemaClinica.Controllers
             return View(await contextoSql.ToListAsync());
         }
 
-        // GET: PeriodicConsultations/Details/5
+        // GET: PeriodicConsultation/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,7 +52,7 @@ namespace SistemaClinica.Controllers
             return View(periodicConsultationModel);
         }
 
-        // GET: PeriodicConsultations/Create
+        // GET: PeriodicConsultation/Create
         public IActionResult Create()
         {
             ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City");
@@ -62,12 +62,12 @@ namespace SistemaClinica.Controllers
             return View();
         }
 
-        // POST: PeriodicConsultations/Create
+        // POST: PeriodicConsultation/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPatient,IdDoctor,IdCompany,IdExams,DateQuery,Ativo,Id")] PeriodicConsultationModel periodicConsultationModel)
+        public async Task<IActionResult> Create([Bind("IdPatient,IdDoctor,IdCompany,IdExams,DateQuery,Id")] PeriodicConsultationModel periodicConsultationModel)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace SistemaClinica.Controllers
             return View(periodicConsultationModel);
         }
 
-        // GET: PeriodicConsultations/Edit/5
+        // GET: PeriodicConsultation/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,12 +102,12 @@ namespace SistemaClinica.Controllers
             return View(periodicConsultationModel);
         }
 
-        // POST: PeriodicConsultations/Edit/5
+        // POST: PeriodicConsultation/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPatient,IdDoctor,IdCompany,IdExams,DateQuery,Ativo,Id")] PeriodicConsultationModel periodicConsultationModel)
+        public async Task<IActionResult> Edit(int id, [Bind("IdPatient,IdDoctor,IdCompany,IdExams,DateQuery,Id")] PeriodicConsultationModel periodicConsultationModel)
         {
             if (id != periodicConsultationModel.Id)
             {
@@ -141,7 +141,7 @@ namespace SistemaClinica.Controllers
             return View(periodicConsultationModel);
         }
 
-        // GET: PeriodicConsultations/Delete/5
+        // GET: PeriodicConsultation/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -163,7 +163,7 @@ namespace SistemaClinica.Controllers
             return View(periodicConsultationModel);
         }
 
-        // POST: PeriodicConsultations/Delete/5
+        // POST: PeriodicConsultation/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
