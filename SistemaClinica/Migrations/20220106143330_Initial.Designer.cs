@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SistemaClinica.Data;
+using SistemaClinica.Context;
 
 #nullable disable
 
 namespace SistemaClinica.Migrations
 {
     [DbContext(typeof(ContextoSql))]
-    [Migration("20220105164909_Inicial")]
-    partial class Inicial
+    [Migration("20220106143330_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -291,22 +291,25 @@ namespace SistemaClinica.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ExamsId")
+                    b.Property<int>("IdExams")
                         .HasColumnType("int");
 
-                    b.Property<int>("PatientId")
+                    b.Property<int>("IdIdExams")
                         .HasColumnType("int");
 
-                    b.Property<int>("PeriodicConsultationId")
+                    b.Property<int>("IdPatient")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPeriodicConsultation")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExamsId");
+                    b.HasIndex("IdIdExams");
 
-                    b.HasIndex("PatientId");
+                    b.HasIndex("IdPatient");
 
-                    b.HasIndex("PeriodicConsultationId");
+                    b.HasIndex("IdPeriodicConsultation");
 
                     b.ToTable("ListExams");
                 });
@@ -318,9 +321,6 @@ namespace SistemaClinica.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime>("DateQuery")
                         .HasColumnType("datetime2");
@@ -395,7 +395,7 @@ namespace SistemaClinica.Migrations
                 {
                     b.HasBaseType("SistemaClinica.Models.AddressModel");
 
-                    b.Property<long>("CPF")
+                    b.Property<long?>("CPF")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("DateBirth")
@@ -485,19 +485,19 @@ namespace SistemaClinica.Migrations
                 {
                     b.HasOne("SistemaClinica.Models.ExamsModel", "Exams")
                         .WithMany()
-                        .HasForeignKey("ExamsId")
+                        .HasForeignKey("IdIdExams")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SistemaClinica.Models.PatientModel", "Patient")
                         .WithMany()
-                        .HasForeignKey("PatientId")
+                        .HasForeignKey("IdPatient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SistemaClinica.Models.PeriodicConsultationModel", "PeriodicConsultation")
                         .WithMany()
-                        .HasForeignKey("PeriodicConsultationId")
+                        .HasForeignKey("IdPeriodicConsultation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

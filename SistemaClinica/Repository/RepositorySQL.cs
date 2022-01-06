@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using SistemaClinica.Data;
+using SistemaClinica.Context;
 using SistemaClinica.Models;
 using System;
 using System.Collections.Generic;

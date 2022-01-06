@@ -28,7 +28,7 @@ namespace SistemaClinica.Models
         [Display(Name = "Telefone")]
         [RegularExpression(
              @"^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$",
-             ErrorMessage = "Informe um Tefone válido!")]
+             ErrorMessage = "Somente numeros!")]
         public Int64 Telephone { get; set; }
 
         [Required(ErrorMessage = "O Email é Obrigatório!")]

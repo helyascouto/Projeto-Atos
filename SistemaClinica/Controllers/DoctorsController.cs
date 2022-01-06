@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SistemaClinica.Data;
+using SistemaClinica.Context;
 using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
@@ -23,7 +23,6 @@ namespace SistemaClinica.Controllers
         }
 
         // GET: Doctor
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.doctors.ToListAsync());

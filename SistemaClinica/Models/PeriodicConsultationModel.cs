@@ -15,7 +15,7 @@ namespace SistemaClinica.Models
 
         }
 
-        public PeriodicConsultationModel(int idPatient, PatientModel patient, int idDoctor, DoctorModel doctor, int idCompany, CompanyModel company, int idExams, ExamsModel exams, DateTime dateQuery, bool ativo)
+        public PeriodicConsultationModel(int idPatient, PatientModel patient, int idDoctor, DoctorModel doctor, int idCompany, CompanyModel company, int idExams, ExamsModel exams, DateTime dateQuery)
         {
             IdPatient = idPatient;
             Patient = patient;
@@ -26,31 +26,31 @@ namespace SistemaClinica.Models
             IdExams = idExams;
             Exams = exams;
             DateQuery = dateQuery;
-            Ativo = ativo;
+       
         }
-
+        [Required(ErrorMessage = "O Paciente é Obrigatório!")]
         [Display(Name = "Paciente")]
         public int IdPatient { get; set; }
 
-        //[Required(ErrorMessage = "O Paciente é Obrigatório!")]
         [ForeignKey("IdPatient")]
-        public virtual PatientModel Patient { get; set; }
+        public virtual PatientModel? Patient { get; set; }
 
+        [Required(ErrorMessage = "O Médico é Obrigatório!")]
         [Display(Name = "Médico")]
         public int IdDoctor { get; set; }
 
-        //[Required(ErrorMessage = "O Médico é Obrigatório!")]
+       
         [ForeignKey("IdDoctor")]
         public virtual DoctorModel? Doctor { get; set; }
 
+        [Required(ErrorMessage = "A Empresa é Obrigatório!")]
         [Display(Name = "Empresa")]
         public int IdCompany { get; set; }
 
-        // [Required(ErrorMessage = "A Empresa é Obrigatório!")]
-        [ForeignKey("IdCompany")]
+      [ForeignKey("IdCompany")]
         public virtual CompanyModel? Company { get; set; }
 
-
+       
         [Display(Name = "Exames")]
         public int IdExams { get; set; }
 
@@ -59,13 +59,10 @@ namespace SistemaClinica.Models
 
        
         [Display(Name = "Data da Consulta")]
-        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        [DataType(DataType.Date, ErrorMessage = "DD/MM/AAAA")]
         public DateTime DateQuery { get; set; }
 
 
-        //[Required(ErrorMessage = "O Nome do Diagnostico é Obrigatório!")]
-        [Display(Name = "Ativo")]
-        public bool Ativo { get; set; }
 
     }
 }

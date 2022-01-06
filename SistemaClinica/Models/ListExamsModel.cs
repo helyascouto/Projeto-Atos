@@ -7,15 +7,31 @@ namespace SistemaClinica.Models
     [Table("ListExams")]
     public class ListExamsModel : EntityBaseModel
     {
+        public ListExamsModel()
+        {
+
+        }
+
+        public ListExamsModel(int idPatient, PatientModel patientModel, int idExams, ExamsModel examsModel)
+        {
+            IdPatient = idPatient;
+            PatientModel = patientModel;
+            IdExams = idExams;
+            ExamsModel = examsModel;
+        }
 
         [Display(Name = "Paciente")]
-        public virtual PatientModel Patient { get; set; }
+        public int IdPatient { get; set; }
+
+        [ForeignKey("IdPatient")]
+        public virtual PatientModel PatientModel { get; set; }
 
         [Display(Name = "Exames")]
-        public virtual ExamsModel Exams { get; set; }
+        public int IdExams { get; set; }
 
-        [Display(Name = "Consulta Periodica ")]
-        public virtual PeriodicConsultationModel PeriodicConsultation { get; set; }
+        [ForeignKey("IdExams")]
+        public virtual ExamsModel ExamsModel { get; set; }
+
 
     }
 }
