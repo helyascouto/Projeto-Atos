@@ -12,25 +12,19 @@ namespace SistemaClinica.Models
 
         }
 
-        public ListExamsModel(int idPatient, PatientModel patientModel, int idExams, ExamsModel examsModel)
-        {
-            IdPatient = idPatient;
-            PatientModel = patientModel;
-            IdExams = idExams;
-            ExamsModel = examsModel;
-        }
-
+        [Required(ErrorMessage = " O Paciente é Obrigatório!")]
         [Display(Name = "Paciente")]
         public int IdPatient { get; set; }
 
         [ForeignKey("IdPatient")]
-        public virtual PatientModel PatientModel { get; set; }
+        public virtual PatientModel? Patient { get; set; }
 
+        [Required(ErrorMessage = " Exames é Obrigatório!")]
         [Display(Name = "Exames")]
         public int IdExams { get; set; }
 
         [ForeignKey("IdExams")]
-        public virtual ExamsModel ExamsModel { get; set; }
+        public virtual ExamsModel? Exams { get; set; }
 
 
     }

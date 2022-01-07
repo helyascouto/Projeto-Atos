@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,6 @@ using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
 {
-    [Authorize]
     public class PeriodicConsultationController : Controller
     {
         private readonly ContextoSql _context;
@@ -23,7 +21,6 @@ namespace SistemaClinica.Controllers
         }
 
         // GET: PeriodicConsultation
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var contextoSql = _context.periodicConsultations.Include(p => p.Company).Include(p => p.Doctor).Include(p => p.Exams).Include(p => p.Patient);

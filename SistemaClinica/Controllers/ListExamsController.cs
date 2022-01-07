@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,6 @@ using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
 {
-    [Authorize]
     public class ListExamsController : Controller
     {
         private readonly ContextoSql _context;
@@ -25,7 +23,7 @@ namespace SistemaClinica.Controllers
         // GET: ListExams
         public async Task<IActionResult> Index()
         {
-            var contextoSql = _context.listExams.Include(l => l.ExamsModel).Include(l => l.PatientModel);
+            var contextoSql = _context.listExams.Include(l => l.Exams).Include(l => l.Patient);
             return View(await contextoSql.ToListAsync());
         }
 
@@ -38,8 +36,8 @@ namespace SistemaClinica.Controllers
             }
 
             var listExamsModel = await _context.listExams
-                .Include(l => l.ExamsModel)
-                .Include(l => l.PatientModel)
+                .Include(l => l.Exams)
+                .Include(l => l.Patient)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (listExamsModel == null)
             {
@@ -75,6 +73,95 @@ namespace SistemaClinica.Controllers
             return View(listExamsModel);
         }
 
-      
+        // GET: ListExams/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var listExamsModel = await _context.listExams.FindAsync(id);
+            if (listExamsModel == null)
+            {
+                return NotFound();
+            }
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", listExamsModel.IdExams);
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "City", listExamsModel.IdPatient);
+            return View(listExamsModel);
+        }
+
+        // POST: ListExams/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("IdPatient,IdExams,Id")] ListExamsModel listExamsModel)
+        {
+            if (id != listExamsModel.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(listExamsModel);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ListExamsModelExists(listExamsModel.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", listExamsModel.IdExams);
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "City", listExamsModel.IdPatient);
+            return View(listExamsModel);
+        }
+
+        // GET: ListExams/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var listExamsModel = await _context.listExams
+                .Include(l => l.Exams)
+                .Include(l => l.Patient)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (listExamsModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(listExamsModel);
+        }
+
+        // POST: ListExams/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var listExamsModel = await _context.listExams.FindAsync(id);
+            _context.listExams.Remove(listExamsModel);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool ListExamsModelExists(int id)
+        {
+            return _context.listExams.Any(e => e.Id == id);
+        }
     }
 }
