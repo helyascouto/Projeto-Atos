@@ -5,13 +5,6 @@ namespace SistemaClinica.Models
 {
     public abstract class EntityBaseModel
     {
-        public EntityBaseModel()
-        {
-
-        }
-
-       
-
         [Key]
         public int Id { get; set; }
 

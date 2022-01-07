@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SistemaClinica.Models
 {
     [Table("Address")]
+
     public abstract class AddressModel : EntityBaseModel
 
     {
