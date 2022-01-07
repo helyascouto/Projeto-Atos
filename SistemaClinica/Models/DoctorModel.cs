@@ -29,10 +29,10 @@ namespace SistemaClinica.Models
 
         [Required(ErrorMessage = "O CPF é Obrigatório!")]
         [Display(Name = "CPF")]
-        //[RegularExpression(
-        //  @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
-        //  ErrorMessage = "Informe um CPF válido!")]
-        public Int64 CPF { get; set; }
+        [RegularExpression(
+               @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
+               ErrorMessage = "Informe um CPF válido!")]
+        public Int64? CPF { get; set; }
 
         [Required(ErrorMessage = "O Nome é Obrigatório!")]
         [Display(Name = "Nome")]

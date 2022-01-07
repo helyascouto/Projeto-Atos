@@ -11,22 +11,22 @@ using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
 {
-    public class ExamsController : Controller
+    public class HealthPlanController : Controller
     {
         private readonly ContextoSql _context;
 
-        public ExamsController(ContextoSql context)
+        public HealthPlanController(ContextoSql context)
         {
             _context = context;
         }
 
-        // GET: Exams
+        // GET: HealthPlan
         public async Task<IActionResult> Index()
         {
-            return View(await _context.exams.ToListAsync());
+            return View(await _context.healthPlans.ToListAsync());
         }
 
-        // GET: Exams/Details/5
+        // GET: HealthPlan/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +34,39 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var healthPlanModel = await _context.healthPlans
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (healthPlanModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(healthPlanModel);
         }
 
-        // GET: Exams/Create
+        // GET: HealthPlan/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Exams/Create
+        // POST: HealthPlan/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Create([Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,Street,Number,District,City,State,Id")] HealthPlanModel healthPlanModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(examsModel);
+                _context.Add(healthPlanModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            return View(healthPlanModel);
         }
 
-        // GET: Exams/Edit/5
+        // GET: HealthPlan/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams.FindAsync(id);
-            if (examsModel == null)
+            var healthPlanModel = await _context.healthPlans.FindAsync(id);
+            if (healthPlanModel == null)
             {
                 return NotFound();
             }
-            return View(examsModel);
+            return View(healthPlanModel);
         }
 
-        // POST: Exams/Edit/5
+        // POST: HealthPlan/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Edit(int id, [Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,Street,Number,District,City,State,Id")] HealthPlanModel healthPlanModel)
         {
-            if (id != examsModel.Id)
+            if (id != healthPlanModel.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace SistemaClinica.Controllers
             {
                 try
                 {
-                    _context.Update(examsModel);
+                    _context.Update(healthPlanModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ExamsModelExists(examsModel.Id))
+                    if (!HealthPlanModelExists(healthPlanModel.Id))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace SistemaClinica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            return View(healthPlanModel);
         }
 
-        // GET: Exams/Delete/5
+        // GET: HealthPlan/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +125,30 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var healthPlanModel = await _context.healthPlans
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (healthPlanModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(healthPlanModel);
         }
 
-        // POST: Exams/Delete/5
+        // POST: HealthPlan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var examsModel = await _context.exams.FindAsync(id);
-            _context.exams.Remove(examsModel);
+            var healthPlanModel = await _context.healthPlans.FindAsync(id);
+            _context.healthPlans.Remove(healthPlanModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ExamsModelExists(int id)
+        private bool HealthPlanModelExists(int id)
         {
-            return _context.exams.Any(e => e.Id == id);
+            return _context.healthPlans.Any(e => e.Id == id);
         }
     }
 }

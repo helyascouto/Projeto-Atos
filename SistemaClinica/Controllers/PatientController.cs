@@ -11,22 +11,23 @@ using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
 {
-    public class ExamsController : Controller
+    public class PatientController : Controller
     {
         private readonly ContextoSql _context;
 
-        public ExamsController(ContextoSql context)
+        public PatientController(ContextoSql context)
         {
             _context = context;
         }
 
-        // GET: Exams
+        // GET: Patient
         public async Task<IActionResult> Index()
         {
-            return View(await _context.exams.ToListAsync());
+            var contextoSql = _context.patients.Include(p => p.Company).Include(p => p.HealthPlan);
+            return View(await contextoSql.ToListAsync());
         }
 
-        // GET: Exams/Details/5
+        // GET: Patient/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +35,45 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var patientModel = await _context.patients
+                .Include(p => p.Company)
+                .Include(p => p.HealthPlan)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (patientModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(patientModel);
         }
 
-        // GET: Exams/Create
+        // GET: Patient/Create
         public IActionResult Create()
         {
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City");
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City");
             return View();
         }
 
-        // POST: Exams/Create
+        // POST: Patient/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Create([Bind("CPF,FistName,LastName,DateBirth,IdHealthPlan,IdCompany,Telephone,Email,ZipCod,City,District,Street,Number,State,Id")] PatientModel patientModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(examsModel);
+                _context.Add(patientModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
+            return View(patientModel);
         }
 
-        // GET: Exams/Edit/5
+        // GET: Patient/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +81,24 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams.FindAsync(id);
-            if (examsModel == null)
+            var patientModel = await _context.patients.FindAsync(id);
+            if (patientModel == null)
             {
                 return NotFound();
             }
-            return View(examsModel);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
+            return View(patientModel);
         }
 
-        // POST: Exams/Edit/5
+        // POST: Patient/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CPF,FistName,LastName,DateBirth,IdHealthPlan,IdCompany,Telephone,Email,ZipCod,City,District,Street,Number,State,Id")] PatientModel patientModel)
         {
-            if (id != examsModel.Id)
+            if (id != patientModel.Id)
             {
                 return NotFound();
             }
@@ -98,12 +107,12 @@ namespace SistemaClinica.Controllers
             {
                 try
                 {
-                    _context.Update(examsModel);
+                    _context.Update(patientModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ExamsModelExists(examsModel.Id))
+                    if (!PatientModelExists(patientModel.Id))
                     {
                         return NotFound();
                     }
@@ -114,10 +123,12 @@ namespace SistemaClinica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
+            return View(patientModel);
         }
 
-        // GET: Exams/Delete/5
+        // GET: Patient/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +136,32 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var patientModel = await _context.patients
+                .Include(p => p.Company)
+                .Include(p => p.HealthPlan)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (patientModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(patientModel);
         }
 
-        // POST: Exams/Delete/5
+        // POST: Patient/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var examsModel = await _context.exams.FindAsync(id);
-            _context.exams.Remove(examsModel);
+            var patientModel = await _context.patients.FindAsync(id);
+            _context.patients.Remove(patientModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ExamsModelExists(int id)
+        private bool PatientModelExists(int id)
         {
-            return _context.exams.Any(e => e.Id == id);
+            return _context.patients.Any(e => e.Id == id);
         }
     }
 }

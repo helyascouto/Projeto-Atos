@@ -11,22 +11,22 @@ using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
 {
-    public class ExamsController : Controller
+    public class DoctorController : Controller
     {
         private readonly ContextoSql _context;
 
-        public ExamsController(ContextoSql context)
+        public DoctorController(ContextoSql context)
         {
             _context = context;
         }
 
-        // GET: Exams
+        // GET: Doctor
         public async Task<IActionResult> Index()
         {
-            return View(await _context.exams.ToListAsync());
+            return View(await _context.doctors.ToListAsync());
         }
 
-        // GET: Exams/Details/5
+        // GET: Doctor/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +34,39 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var doctorModel = await _context.doctors
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (doctorModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(doctorModel);
         }
 
-        // GET: Exams/Create
+        // GET: Doctor/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Exams/Create
+        // POST: Doctor/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Create([Bind("CRM,CPF,FistName,LastName,DateBirth,Telephone,Email,ZipCod,City,District,Street,Number,State,Id")] DoctorModel doctorModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(examsModel);
+                _context.Add(doctorModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            return View(doctorModel);
         }
 
-        // GET: Exams/Edit/5
+        // GET: Doctor/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams.FindAsync(id);
-            if (examsModel == null)
+            var doctorModel = await _context.doctors.FindAsync(id);
+            if (doctorModel == null)
             {
                 return NotFound();
             }
-            return View(examsModel);
+            return View(doctorModel);
         }
 
-        // POST: Exams/Edit/5
+        // POST: Doctor/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CRM,CPF,FistName,LastName,DateBirth,Telephone,Email,ZipCod,City,District,Street,Number,State,Id")] DoctorModel doctorModel)
         {
-            if (id != examsModel.Id)
+            if (id != doctorModel.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace SistemaClinica.Controllers
             {
                 try
                 {
-                    _context.Update(examsModel);
+                    _context.Update(doctorModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ExamsModelExists(examsModel.Id))
+                    if (!DoctorModelExists(doctorModel.Id))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace SistemaClinica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            return View(doctorModel);
         }
 
-        // GET: Exams/Delete/5
+        // GET: Doctor/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +125,30 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var doctorModel = await _context.doctors
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (doctorModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(doctorModel);
         }
 
-        // POST: Exams/Delete/5
+        // POST: Doctor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var examsModel = await _context.exams.FindAsync(id);
-            _context.exams.Remove(examsModel);
+            var doctorModel = await _context.doctors.FindAsync(id);
+            _context.doctors.Remove(doctorModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ExamsModelExists(int id)
+        private bool DoctorModelExists(int id)
         {
-            return _context.exams.Any(e => e.Id == id);
+            return _context.doctors.Any(e => e.Id == id);
         }
     }
 }

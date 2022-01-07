@@ -28,9 +28,10 @@ namespace SistemaClinica.Models
 
         [Required(ErrorMessage = "O CNPJ é Obrigatório!")]
         [Display(Name = "CNPJ")]
-        //[RegularExpression(
-        //   @"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
-        //   ErrorMessage = "Informe um CNPJ válido!")]
+        [RegularExpression(
+           @"([0-9]{14})",
+           ErrorMessage = "Informe um CNPJ válido EX:00000000348945!")]
+
         public Int64 CNPJ { get; set; }
 
 

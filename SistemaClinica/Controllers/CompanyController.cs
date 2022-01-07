@@ -11,22 +11,22 @@ using SistemaClinica.Models;
 
 namespace SistemaClinica.Controllers
 {
-    public class ExamsController : Controller
+    public class CompanyController : Controller
     {
         private readonly ContextoSql _context;
 
-        public ExamsController(ContextoSql context)
+        public CompanyController(ContextoSql context)
         {
             _context = context;
         }
 
-        // GET: Exams
+        // GET: Company
         public async Task<IActionResult> Index()
         {
-            return View(await _context.exams.ToListAsync());
+            return View(await _context.companies.ToListAsync());
         }
 
-        // GET: Exams/Details/5
+        // GET: Company/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +34,39 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var companyModel = await _context.companies
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (companyModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(companyModel);
         }
 
-        // GET: Exams/Create
+        // GET: Company/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Exams/Create
+        // POST: Company/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Create([Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,City,District,Street,Number,State,Id")] CompanyModel companyModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(examsModel);
+                _context.Add(companyModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            return View(companyModel);
         }
 
-        // GET: Exams/Edit/5
+        // GET: Company/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams.FindAsync(id);
-            if (examsModel == null)
+            var companyModel = await _context.companies.FindAsync(id);
+            if (companyModel == null)
             {
                 return NotFound();
             }
-            return View(examsModel);
+            return View(companyModel);
         }
 
-        // POST: Exams/Edit/5
+        // POST: Company/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NameExams,Id")] ExamsModel examsModel)
+        public async Task<IActionResult> Edit(int id, [Bind("NameCompany,CNPJ,Telephone,Email,ZipCod,City,District,Street,Number,State,Id")] CompanyModel companyModel)
         {
-            if (id != examsModel.Id)
+            if (id != companyModel.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace SistemaClinica.Controllers
             {
                 try
                 {
-                    _context.Update(examsModel);
+                    _context.Update(companyModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ExamsModelExists(examsModel.Id))
+                    if (!CompanyModelExists(companyModel.Id))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace SistemaClinica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(examsModel);
+            return View(companyModel);
         }
 
-        // GET: Exams/Delete/5
+        // GET: Company/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +125,30 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
 
-            var examsModel = await _context.exams
+            var companyModel = await _context.companies
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (examsModel == null)
+            if (companyModel == null)
             {
                 return NotFound();
             }
 
-            return View(examsModel);
+            return View(companyModel);
         }
 
-        // POST: Exams/Delete/5
+        // POST: Company/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var examsModel = await _context.exams.FindAsync(id);
-            _context.exams.Remove(examsModel);
+            var companyModel = await _context.companies.FindAsync(id);
+            _context.companies.Remove(companyModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ExamsModelExists(int id)
+        private bool CompanyModelExists(int id)
         {
-            return _context.exams.Any(e => e.Id == id);
+            return _context.companies.Any(e => e.Id == id);
         }
     }
 }
