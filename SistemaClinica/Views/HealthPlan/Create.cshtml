@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
-<h4>HealthPlanModel</h4>
+<h4>Plano de saude</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -35,12 +35,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="ZipCod" class="control-label"></label>
-                <input asp-for="ZipCod" class="form-control" />
+                <input asp-for="ZipCod" id="cep" onblur="CarregarEndereco()" class="form-control" />
                 <span asp-validation-for="ZipCod" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <label asp-for="Street" class="control-label"></label>
-                <input asp-for="Street" class="form-control" />
+                <input asp-for="Street" id="rua" class="form-control" />
                 <span asp-validation-for="Street" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -50,17 +51,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="District" class="control-label"></label>
-                <input asp-for="District" class="form-control" />
+                <input asp-for="District" id="bairro" class="form-control" />
                 <span asp-validation-for="District" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
+                <input asp-for="City" id="cidade" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" />
+                <input asp-for="State" id="uf" class="form-control" />
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -75,5 +76,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

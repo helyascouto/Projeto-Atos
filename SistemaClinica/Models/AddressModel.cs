@@ -27,9 +27,7 @@ namespace SistemaClinica.Models
 
         [Required(ErrorMessage = "O Telefone é Obrigatório!")]
         [Display(Name = "Telefone")]
-        [RegularExpression(
-             @"^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$",
-             ErrorMessage = "Informe um Telefone válido:")]
+        [StringLength(11, MinimumLength = 10, ErrorMessage = "DDD+Numero do Telefone")]
         public Int64 Telephone { get; set; }
 
         [Required(ErrorMessage = "O Email é Obrigatório!")]
@@ -43,8 +41,8 @@ namespace SistemaClinica.Models
            @"^\d{5}-?\d{3}$",
            ErrorMessage = "Informe um Cep válido!")]
         public string ZipCod { get; set; }
-     
-        
+
+
         [Display(Name = "Cidade")]
         [Required(ErrorMessage = "O Cidade é Obrigatório!")]
         public string City { get; set; }
