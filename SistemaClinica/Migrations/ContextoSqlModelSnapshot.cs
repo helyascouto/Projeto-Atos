@@ -256,8 +256,10 @@ namespace SistemaClinica.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Telephone")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Telephone")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("ZipCod")
                         .IsRequired()
@@ -511,7 +513,7 @@ namespace SistemaClinica.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SistemaClinica.Models.ExamsModel", "Exams")
+                    b.HasOne("SistemaClinica.Models.ListExamsModel", "Exams")
                         .WithMany()
                         .HasForeignKey("IdExams")
                         .OnDelete(DeleteBehavior.Cascade)

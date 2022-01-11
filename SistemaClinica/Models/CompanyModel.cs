@@ -31,7 +31,6 @@ namespace SistemaClinica.Models
         [RegularExpression(
            @"([0-9]{14})",
            ErrorMessage = "Informe um CNPJ válido EX:00000000348945!")]
-
         public Int64 CNPJ { get; set; }
 
 

@@ -14,7 +14,7 @@ namespace SistemaClinica.Models
         {
 
         }
-        protected AddressModel(long telephone, string email, string zipCod, string number, string district, string city, string state)
+        protected AddressModel(string telephone, string email, string zipCod, string number, string district, string city, string state)
         {
             Telephone = telephone;
             Email = email;
@@ -28,7 +28,7 @@ namespace SistemaClinica.Models
         [Required(ErrorMessage = "O Telefone é Obrigatório!")]
         [Display(Name = "Telefone")]
         [StringLength(11, MinimumLength = 10, ErrorMessage = "DDD+Numero do Telefone")]
-        public Int64 Telephone { get; set; }
+        public string Telephone { get; set; }
 
         [Required(ErrorMessage = "O Email é Obrigatório!")]
         [Display(Name = "Email")]

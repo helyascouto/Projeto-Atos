@@ -53,7 +53,7 @@ namespace SistemaClinica.Controllers
         public IActionResult Create()
         {
             ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams");
-            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "City");
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName");
             return View();
         }
 
@@ -71,7 +71,7 @@ namespace SistemaClinica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", listExamsModel.IdExams);
-            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "City", listExamsModel.IdPatient);
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", listExamsModel.IdPatient);
             return View(listExamsModel);
         }
 
@@ -89,7 +89,7 @@ namespace SistemaClinica.Controllers
                 return NotFound();
             }
             ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", listExamsModel.IdExams);
-            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "City", listExamsModel.IdPatient);
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", listExamsModel.IdPatient);
             return View(listExamsModel);
         }
 
@@ -126,7 +126,7 @@ namespace SistemaClinica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", listExamsModel.IdExams);
-            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "City", listExamsModel.IdPatient);
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", listExamsModel.IdPatient);
             return View(listExamsModel);
         }
 

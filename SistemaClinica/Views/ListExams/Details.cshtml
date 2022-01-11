@@ -1,21 +1,21 @@
 ﻿@model SistemaClinica.Models.ListExamsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Detalhes</h1>
 
 <div>
-    <h4>ListExamsModel</h4>
+    <h4>Exames</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Patient)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Patient.City)
+            @Html.DisplayFor(model => model.Patient.FistName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Exams)
@@ -26,6 +26,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+       <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+    <a class="btn btn-danger  m-1" asp-action="Index"> Voltar </a>
 </div>

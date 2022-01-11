@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SistemaClinica.Migrations
 {
-    public partial class Initial : Migration
+    public partial class v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,13 +15,13 @@ namespace SistemaClinica.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Telephone = table.Column<long>(type: "bigint", nullable: false),
+                    Telephone = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZipCod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    District = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    District = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     State = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -329,9 +329,9 @@ namespace SistemaClinica.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PeriodicConsultation_Exams_IdExams",
+                        name: "FK_PeriodicConsultation_ListExams_IdExams",
                         column: x => x.IdExams,
-                        principalTable: "Exams",
+                        principalTable: "ListExams",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -440,9 +440,6 @@ namespace SistemaClinica.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ListExams");
-
-            migrationBuilder.DropTable(
                 name: "PeriodicConsultation");
 
             migrationBuilder.DropTable(
@@ -453,6 +450,9 @@ namespace SistemaClinica.Migrations
 
             migrationBuilder.DropTable(
                 name: "Doctor");
+
+            migrationBuilder.DropTable(
+                name: "ListExams");
 
             migrationBuilder.DropTable(
                 name: "Exams");
