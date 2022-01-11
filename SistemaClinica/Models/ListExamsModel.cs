@@ -12,6 +12,14 @@ namespace SistemaClinica.Models
 
         }
 
+        public ListExamsModel(int idPatient, PatientModel? patient, int idExams, ExamsModel? exams)
+        {
+            IdPatient = idPatient;
+            Patient = patient;
+            IdExams = idExams;
+            Exams = exams;
+        }
+
         [Required(ErrorMessage = " O Paciente é Obrigatório!")]
         [Display(Name = "Paciente")]
         public int IdPatient { get; set; }

@@ -1,7 +1,7 @@
 ﻿@model SistemaClinica.Models.PeriodicConsultationModel
 
 @{
-    ViewData["Title"] = "Excluir";
+    ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,44 +9,43 @@
 
 <div>
     <h4>Deseja excluir essa Consulta?</h4>
-    <h4>PeriodicConsultationModel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Patient)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Patient.City)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Doctor)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Doctor.City)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Company)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Company.City)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Exams)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExamsModel)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Exams.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExamsModel.NameExams)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DateQuery)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateQuery)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-      <input type="submit" value="Excluir" class="btn btn-danger m-1" />
+        <input type="submit" value="Excluir" class="btn btn-danger m-1" />
         <a class="btn btn-success  m-1" asp-action="Index"> Voltar </a>
     </form>
 </div>

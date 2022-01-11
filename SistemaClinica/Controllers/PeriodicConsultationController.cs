@@ -26,7 +26,7 @@ namespace SistemaClinica.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var contextoSql = _context.periodicConsultations.Include(p => p.Company).Include(p => p.Doctor).Include(p => p.Exams).Include(p => p.Patient);
+            var contextoSql = _context.periodicConsultations.Include(p => p.Company).Include(p => p.Doctor).Include(p => p.ExamsModel).Include(p => p.Patient);
             return View(await contextoSql.ToListAsync());
         }
 
@@ -41,7 +41,7 @@ namespace SistemaClinica.Controllers
             var periodicConsultationModel = await _context.periodicConsultations
                 .Include(p => p.Company)
                 .Include(p => p.Doctor)
-                .Include(p => p.Exams)
+                .Include(p => p.ExamsModel)
                 .Include(p => p.Patient)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (periodicConsultationModel == null)
@@ -57,7 +57,7 @@ namespace SistemaClinica.Controllers
         {
             ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany");
             ViewData["IdDoctor"] = new SelectList(_context.doctors, "Id", "FistName");
-            ViewData["IdExams"] = new SelectList(_context.listExams, "Id", "NameExams");
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams");
             ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName");
             return View();
         }
@@ -77,12 +77,10 @@ namespace SistemaClinica.Controllers
             }
             ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", periodicConsultationModel.IdCompany);
             ViewData["IdDoctor"] = new SelectList(_context.doctors, "Id", "FistName", periodicConsultationModel.IdDoctor);
-            ViewData["IdExams"] = new SelectList(_context.listExams, "Id", "NameExams", periodicConsultationModel.IdExams);
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", periodicConsultationModel.IdExams);
             ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", periodicConsultationModel.IdPatient);
             return View(periodicConsultationModel);
         }
-
-
 
 
 
@@ -107,13 +105,8 @@ namespace SistemaClinica.Controllers
             }
             ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", listExamsModel.IdExams);
             ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", listExamsModel.IdPatient);
-            return View(listExamsModel);
+            return View();
         }
-
-
-
-
-
 
 
 
@@ -135,7 +128,7 @@ namespace SistemaClinica.Controllers
             }
             ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", periodicConsultationModel.IdCompany);
             ViewData["IdDoctor"] = new SelectList(_context.doctors, "Id", "FistName", periodicConsultationModel.IdDoctor);
-            ViewData["IdExams"] = new SelectList(_context.listExams, "Id", "NameExams", periodicConsultationModel.IdExams);
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", periodicConsultationModel.IdExams);
             ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", periodicConsultationModel.IdPatient);
             return View(periodicConsultationModel);
         }
@@ -174,7 +167,7 @@ namespace SistemaClinica.Controllers
             }
             ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", periodicConsultationModel.IdCompany);
             ViewData["IdDoctor"] = new SelectList(_context.doctors, "Id", "FistName", periodicConsultationModel.IdDoctor);
-            ViewData["IdExams"] = new SelectList(_context.listExams, "Id", "NameExams", periodicConsultationModel.IdExams);
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", periodicConsultationModel.IdExams);
             ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", periodicConsultationModel.IdPatient);
             return View(periodicConsultationModel);
         }
@@ -190,7 +183,7 @@ namespace SistemaClinica.Controllers
             var periodicConsultationModel = await _context.periodicConsultations
                 .Include(p => p.Company)
                 .Include(p => p.Doctor)
-                .Include(p => p.Exams)
+                .Include(p => p.ExamsModel)
                 .Include(p => p.Patient)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (periodicConsultationModel == null)

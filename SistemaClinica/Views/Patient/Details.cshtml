@@ -1,7 +1,7 @@
 ﻿@model SistemaClinica.Models.PatientModel
 
 @{
-    ViewData["Title"] = "Detalhes";
+    ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -98,6 +98,6 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
     <a class="btn btn-danger  m-1" asp-action="Index"> Voltar </a>
 </div>

@@ -52,8 +52,8 @@ namespace SistemaClinica.Controllers
         // GET: Patient/Create
         public IActionResult Create()
         {
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany");
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany");
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City");
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City");
             return View();
         }
 
@@ -70,10 +70,35 @@ namespace SistemaClinica.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", patientModel.IdCompany);
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany", patientModel.IdHealthPlan);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
             return View(patientModel);
         }
+
+
+
+        //Colocar esse metodo na tela de cadstro!
+        public IActionResult CreateNewExams()
+        {
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams");
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName");
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateNewExams([Bind("IdPatient,IdExams,Id")] ListExamsModel listExamsModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(listExamsModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams", listExamsModel.IdExams);
+            ViewData["IdPatient"] = new SelectList(_context.patients, "Id", "FistName", listExamsModel.IdPatient);
+            return View(listExamsModel);
+        }
+
 
         // GET: Patient/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -88,8 +113,8 @@ namespace SistemaClinica.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", patientModel.IdCompany);
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany", patientModel.IdHealthPlan);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
             return View(patientModel);
         }
 
@@ -125,8 +150,8 @@ namespace SistemaClinica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", patientModel.IdCompany);
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany", patientModel.IdHealthPlan);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
             return View(patientModel);
         }
 

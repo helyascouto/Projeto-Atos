@@ -4,9 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Index</h1>
-
+<h1>Consulta Periódica</h1>
 <p>
     <a class="btn btn-primary m-1" asp-action="Create">Criar novo</a>
 </p>
@@ -23,7 +21,7 @@
                 @Html.DisplayNameFor(model => model.Company)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Exams)
+                @Html.DisplayNameFor(model => model.ExamsModel)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateQuery)
@@ -45,7 +43,7 @@
                     @Html.DisplayFor(modelItem => item.Company.City)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Exams.Id)
+                    @Html.DisplayFor(modelItem => item.ExamsModel.NameExams)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateQuery)

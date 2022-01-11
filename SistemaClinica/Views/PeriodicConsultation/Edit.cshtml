@@ -1,13 +1,13 @@
 ﻿@model SistemaClinica.Models.PeriodicConsultationModel
 
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Editar</h1>
 
-<h4>Consulta Periódicas</h4>
+<h4>Consulta Periódica</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -40,7 +40,7 @@
             </div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-               <input  type="submit" value="Save" class="btn btn-primary m-1" />
+                <input  type="submit" value="Save" class="btn btn-primary m-1" />
                 <a class="btn btn-danger  m-1" asp-action="Index"> Voltar </a>
             </div>
         </form>

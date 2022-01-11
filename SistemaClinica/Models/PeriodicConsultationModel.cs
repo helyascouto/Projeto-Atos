@@ -15,7 +15,7 @@ namespace SistemaClinica.Models
 
         }
 
-        public PeriodicConsultationModel(int idPatient, PatientModel? patient, int idDoctor, DoctorModel? doctor, int idCompany, CompanyModel? company, int idExams, ListExamsModel exams, DateTime dateQuery)
+        public PeriodicConsultationModel(int idPatient, PatientModel? patient, int idDoctor, DoctorModel? doctor, int idCompany, CompanyModel? company, int idExams, ExamsModel exams, DateTime dateQuery)
         {
             IdPatient = idPatient;
             Patient = patient;
@@ -24,7 +24,7 @@ namespace SistemaClinica.Models
             IdCompany = idCompany;
             Company = company;
             IdExams = idExams;
-            Exams = exams;
+            ExamsModel = exams;
             DateQuery = dateQuery;
         }
 
@@ -55,7 +55,7 @@ namespace SistemaClinica.Models
         public int IdExams { get; set; }
 
         [ForeignKey("IdExams")]
-        public virtual ListExamsModel Exams { get; set; }
+        public virtual ExamsModel? ExamsModel { get; set; }
 
 
         [Display(Name = "Data da Consulta")]

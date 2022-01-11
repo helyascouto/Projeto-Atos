@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Consulta Periódicas</h1>
+<h1>Cadastrar</h1>
 
-<h4>Cadastrar nova Consulta</h4>
+<h4>Cadastrar uma nova Comsulta</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label asp-for="IdExams" class="control-label"></label>
                 <select asp-for="IdExams" class="form-control" asp-items="ViewBag.IdExams"></select>
-                  <p> <a class="btn btn-outline-primary m-1" asp-action="CreateNewExams">Novo exame</a></p> 
+                <p> <a class="btn btn-outline-primary m-1" asp-action="CreateNewExams">Novo exame</a></p>
             </div>
             <div class="form-group">
                 <label asp-for="DateQuery" class="control-label"></label>
