@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SistemaClinica</title>
+    <title>@ViewData["Title"] - Sistema Clinica</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SistemaClinica.styles.css" asp-append-version="true" />
@@ -11,8 +11,8 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SistemaClinica</a>
+            <div class="container-col-md-4 offset-md-2 "> <img src="~/lib/img/logo.svg" class="d-block w-8" alt="..." /></div>
+            <div class="container-md ">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,10 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Exams" asp-action="Index">Exames</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="ListExams" asp-action="Index">ListExams</a>
-                        </li>
-
+                      
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="HealthPlan" asp-action="Index">Plano de Saude</a>
                         </li>

@@ -513,7 +513,7 @@ namespace SistemaClinica.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SistemaClinica.Models.ListExamsModel", "ListExamsModel")
+                    b.HasOne("SistemaClinica.Models.ExamsModel", "ExamsModel")
                         .WithMany()
                         .HasForeignKey("IdExams")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -529,7 +529,7 @@ namespace SistemaClinica.Migrations
 
                     b.Navigation("Doctor");
 
-                    b.Navigation("ListExamsModel");
+                    b.Navigation("ExamsModel");
 
                     b.Navigation("Patient");
                 });

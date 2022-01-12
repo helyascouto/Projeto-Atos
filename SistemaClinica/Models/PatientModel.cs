@@ -54,12 +54,11 @@ namespace SistemaClinica.Models
         [Display(Name = "Data de Nascimento")]
         public DateTime DateBirth { get; set; }
 
-        
         [Display(Name = "Plano de Saude")]
         public int? IdHealthPlan { get; set; }
 
-
         [ForeignKey("IdHealthPlan")]
+       // [Display(Name = "Plano de Saude")]
         public virtual HealthPlanModel? HealthPlan { get; set; }
 
         [Required(ErrorMessage = "A Empresa é Obrigatório!")]

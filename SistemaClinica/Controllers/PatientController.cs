@@ -52,8 +52,8 @@ namespace SistemaClinica.Controllers
         // GET: Patient/Create
         public IActionResult Create()
         {
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City");
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City");
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany");
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany");
             return View();
         }
 
@@ -70,8 +70,8 @@ namespace SistemaClinica.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany", patientModel.IdHealthPlan);
             return View(patientModel);
         }
 
@@ -113,8 +113,8 @@ namespace SistemaClinica.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany", patientModel.IdHealthPlan);
             return View(patientModel);
         }
 
@@ -150,8 +150,8 @@ namespace SistemaClinica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "City", patientModel.IdCompany);
-            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "City", patientModel.IdHealthPlan);
+            ViewData["IdCompany"] = new SelectList(_context.companies, "Id", "NameCompany", patientModel.IdCompany);
+            ViewData["IdHealthPlan"] = new SelectList(_context.healthPlans, "Id", "NameCompany", patientModel.IdHealthPlan);
             return View(patientModel);
         }
 

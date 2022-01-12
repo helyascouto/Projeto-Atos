@@ -12,8 +12,8 @@ using SistemaClinica.Context;
 namespace SistemaClinica.Migrations
 {
     [DbContext(typeof(ContextoSql))]
-    [Migration("20220111194450_v1")]
-    partial class v1
+    [Migration("20220112121426_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -515,7 +515,7 @@ namespace SistemaClinica.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SistemaClinica.Models.ListExamsModel", "ListExamsModel")
+                    b.HasOne("SistemaClinica.Models.ExamsModel", "ExamsModel")
                         .WithMany()
                         .HasForeignKey("IdExams")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -531,7 +531,7 @@ namespace SistemaClinica.Migrations
 
                     b.Navigation("Doctor");
 
-                    b.Navigation("ListExamsModel");
+                    b.Navigation("ExamsModel");
 
                     b.Navigation("Patient");
                 });

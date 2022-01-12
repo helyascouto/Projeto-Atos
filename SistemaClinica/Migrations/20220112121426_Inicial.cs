@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SistemaClinica.Migrations
 {
-    public partial class v1 : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -329,9 +329,9 @@ namespace SistemaClinica.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PeriodicConsultation_ListExams_IdExams",
+                        name: "FK_PeriodicConsultation_Exams_IdExams",
                         column: x => x.IdExams,
-                        principalTable: "ListExams",
+                        principalTable: "Exams",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -440,6 +440,9 @@ namespace SistemaClinica.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "ListExams");
+
+            migrationBuilder.DropTable(
                 name: "PeriodicConsultation");
 
             migrationBuilder.DropTable(
@@ -450,9 +453,6 @@ namespace SistemaClinica.Migrations
 
             migrationBuilder.DropTable(
                 name: "Doctor");
-
-            migrationBuilder.DropTable(
-                name: "ListExams");
 
             migrationBuilder.DropTable(
                 name: "Exams");

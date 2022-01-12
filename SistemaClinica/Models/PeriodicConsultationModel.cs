@@ -44,6 +44,7 @@ namespace SistemaClinica.Models
         public virtual DoctorModel? Doctor { get; set; }
 
         [Required(ErrorMessage = "A Empresa é Obrigatório!")]
+
         [Display(Name = "Empresa")]
         public int IdCompany { get; set; }
 
