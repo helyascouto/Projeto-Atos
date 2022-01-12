@@ -1,14 +1,14 @@
 ﻿@model SistemaClinica.Models.ExamsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Detalhes</h1>
 
 <div>
-    <h4>ExamsModel</h4>
+    <h4>Exames</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -20,6 +20,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+       <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a class="btn btn-danger  m-1" asp-action="Index"> Voltar </a>
 </div>

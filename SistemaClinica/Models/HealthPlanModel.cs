@@ -9,10 +9,7 @@ namespace SistemaClinica.Models
     [Table("HealthPlan")]
     public class HealthPlanModel : CompanyModel
     {
-        public HealthPlanModel()
-        {
-
-        }
+       
 
     }
 }
