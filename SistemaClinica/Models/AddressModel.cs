@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -10,11 +9,29 @@ namespace SistemaClinica.Models
     public abstract class AddressModel : EntityBaseModel
 
     {
+#pragma warning disable CS8618 // O propriedade não anulável 'District' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'ZipCod' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'Number' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'State' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'Email' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'City' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'Telephone' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         public AddressModel()
+#pragma warning restore CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'Telephone' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'City' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'Email' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'State' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'Number' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'ZipCod' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'District' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         {
 
         }
+#pragma warning disable CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         protected AddressModel(string telephone, string email, string zipCod, string number, string district, string city, string state)
+#pragma warning restore CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         {
             Telephone = telephone;
             Email = email;
@@ -30,9 +47,9 @@ namespace SistemaClinica.Models
         [StringLength(11, MinimumLength = 10, ErrorMessage = "DDD+Numero do Telefone")]
         public string Telephone { get; set; }
 
-        [Required(ErrorMessage = "O Email é Obrigatório!")]
-        [Display(Name = "Email")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Informe um Email válido")]
+        [Required(ErrorMessage = "O E-mail é Obrigatório!")]
+        [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Informe um E-mail válido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O Cep é Obrigatório!")]
@@ -55,7 +72,7 @@ namespace SistemaClinica.Models
         [Required(ErrorMessage = "A Rua é Obrigatório!")]
         public string Street { get; set; }
 
-        [Display(Name = "Numero")]
+        [Display(Name = "Número")]
         public string Number { get; set; }
 
         [Display(Name = "Estado")]

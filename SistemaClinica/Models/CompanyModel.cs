@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -8,7 +7,9 @@ namespace SistemaClinica.Models
     [Table("Company")]
     public class CompanyModel : AddressModel
     {
+#pragma warning disable CS8618 // O propriedade não anulável 'NameCompany' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         public CompanyModel()
+#pragma warning restore CS8618 // O propriedade não anulável 'NameCompany' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         {
 
         }
@@ -19,10 +20,8 @@ namespace SistemaClinica.Models
         }
 
         [Required(ErrorMessage = "O Nome é Obrigatório!")]
-        [Display(Name = "Empresa")]
+        [Display(Name = "Nome da Empresa")]
         [StringLength(40, MinimumLength = 3, ErrorMessage = "Entre 3 a 40 Caracteres")]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage =
-            "Números e caracteres especiais não são permitidos no nome.")]
         public string NameCompany { get; set; }
 
 

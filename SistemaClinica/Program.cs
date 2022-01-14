@@ -1,8 +1,5 @@
-using FluentAssertions.Common;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Components.Authorization;
 using SistemaClinica.Context;
 var builder = WebApplication.CreateBuilder(args);
 

@@ -7,14 +7,14 @@
 
 <h1>Cadastrar</h1>
 
-<h4>Cadastrar novo Plano de Saude</h4>
+<h4>Cadastrar novo Plano de Saúde</h4>
 <hr />
 <div class="row">
     <div class="col-md">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="card">
-                <div class="card-header">Dados Pessoais</div>
+                <div class="card-header">Dados</div>
                 <div class="card-body row">
                     <div class="col-md">
                         <div class="form-group">
@@ -33,6 +33,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="card">
                 <div class="card-header">Dados de Contato</div>
                 <div class="card-body row">
@@ -97,6 +99,7 @@
 
 
             <div class="form-group">
+                 <br />
                 <input type="submit" value=" Cadastrar " class="btn btn-primary m-1" />
                 <a class="btn btn-danger  m-1" asp-action="Index"> Voltar </a>
             </div>
