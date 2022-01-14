@@ -4,11 +4,11 @@
 E um sistema desenvolvido para gerenciamento de consultas para clínicas,
 O sistema consiste em fazer CRUD e gerenciar todos os procedimentos relacionados ao paciente.
 
-
+<img src="https://repository-images.githubusercontent.com/441327465/f8f58a0d-ce65-4e25-b191-9ce809b07bcf" alt="exemplo imagem">
 
 ### Tarefas Realizadas
 
-- [x] Criação da arquitetura do software.
+- [x] Criação da arquitetura do software MVC.
 - [x] Instalação das bibliotecas Dataannotations, Entity framework, Identity .
 - [x] Criação das classes e validado os campos com Dataannotations
 - [x] Criação DbContext e mapeando as classes com Dataannotations para o uso do Entity framework. 
