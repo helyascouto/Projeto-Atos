@@ -1,4 +1,4 @@
-# Sistema Clinica Medica Ocupacional-Em Desenvolvimento 😄
+# Sistema para Clinica Medica - Em Desenvolvimento 😄
 
 
 E um sistema desenvolvido para gerenciamento de consultas para clínicas,
