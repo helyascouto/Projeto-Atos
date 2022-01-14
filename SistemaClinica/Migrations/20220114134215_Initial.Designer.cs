@@ -12,8 +12,8 @@ using SistemaClinica.Context;
 namespace SistemaClinica.Migrations
 {
     [DbContext(typeof(ContextoSql))]
-    [Migration("20220112121426_Inicial")]
-    partial class Inicial
+    [Migration("20220114134215_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -300,7 +300,7 @@ namespace SistemaClinica.Migrations
                     b.Property<int>("IdExams")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPatient")
+                    b.Property<int?>("IdPatient")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -492,9 +492,7 @@ namespace SistemaClinica.Migrations
 
                     b.HasOne("SistemaClinica.Models.PatientModel", "Patient")
                         .WithMany()
-                        .HasForeignKey("IdPatient")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdPatient");
 
                     b.Navigation("Exams");
 

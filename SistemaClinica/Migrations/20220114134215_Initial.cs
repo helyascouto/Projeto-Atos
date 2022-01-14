@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace SistemaClinica.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -281,7 +280,7 @@ namespace SistemaClinica.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdPatient = table.Column<int>(type: "int", nullable: false),
+                    IdPatient = table.Column<int>(type: "int", nullable: true),
                     IdExams = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -297,8 +296,7 @@ namespace SistemaClinica.Migrations
                         name: "FK_ListExams_Patients_IdPatient",
                         column: x => x.IdPatient,
                         principalTable: "Patients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

@@ -298,7 +298,7 @@ namespace SistemaClinica.Migrations
                     b.Property<int>("IdExams")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPatient")
+                    b.Property<int?>("IdPatient")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -490,9 +490,7 @@ namespace SistemaClinica.Migrations
 
                     b.HasOne("SistemaClinica.Models.PatientModel", "Patient")
                         .WithMany()
-                        .HasForeignKey("IdPatient")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdPatient");
 
                     b.Navigation("Exams");
 

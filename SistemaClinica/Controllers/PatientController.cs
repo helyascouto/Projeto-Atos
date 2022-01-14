@@ -1,8 +1,4 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -77,7 +73,7 @@ namespace SistemaClinica.Controllers
 
 
 
-        //Colocar esse metodo na tela de cadstro!
+
         public IActionResult CreateNewExams()
         {
             ViewData["IdExams"] = new SelectList(_context.exams, "Id", "NameExams");

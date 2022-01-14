@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaClinica", "SistemaClinica\SistemaClinica.csproj", "{1665CBAD-5A83-47D4-AAC9-DE297693CE8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaControleFila", "SistemaControleFila\SistemaControleFila.csproj", "{EC4681B6-9989-434D-9AE0-A5045B17E240}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1665CBAD-5A83-47D4-AAC9-DE297693CE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1665CBAD-5A83-47D4-AAC9-DE297693CE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1665CBAD-5A83-47D4-AAC9-DE297693CE8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4681B6-9989-434D-9AE0-A5045B17E240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4681B6-9989-434D-9AE0-A5045B17E240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4681B6-9989-434D-9AE0-A5045B17E240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4681B6-9989-434D-9AE0-A5045B17E240}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

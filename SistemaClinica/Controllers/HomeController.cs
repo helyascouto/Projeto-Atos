@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaClinica.Erro;
-using SistemaClinica.Models;
 using System.Diagnostics;
 
 namespace SistemaClinica.Controllers
@@ -19,7 +17,7 @@ namespace SistemaClinica.Controllers
         {
             return View();
         }
-      
+
         public IActionResult Privacy()
         {
             return View();

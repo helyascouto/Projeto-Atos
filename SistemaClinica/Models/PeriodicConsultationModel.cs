@@ -1,7 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -33,22 +30,24 @@ namespace SistemaClinica.Models
         public int IdPatient { get; set; }
 
         [ForeignKey("IdPatient")]
+        [Display(Name = "Paciente")]
         public virtual PatientModel? Patient { get; set; }
 
-        [Required(ErrorMessage = "O Médico é Obrigatório!")]
         [Display(Name = "Médico")]
+        [Required(ErrorMessage = "O Médico é Obrigatório!")]
         public int IdDoctor { get; set; }
 
 
         [ForeignKey("IdDoctor")]
+        [Display(Name = "Médico")]
         public virtual DoctorModel? Doctor { get; set; }
 
-        [Required(ErrorMessage = "A Empresa é Obrigatório!")]
-
         [Display(Name = "Empresa")]
+        [Required(ErrorMessage = "A Empresa é Obrigatório!")]
         public int IdCompany { get; set; }
 
         [ForeignKey("IdCompany")]
+        [Display(Name = "Empresa")]
         public virtual CompanyModel? Company { get; set; }
 
 
@@ -56,6 +55,7 @@ namespace SistemaClinica.Models
         public int IdExams { get; set; }
 
         [ForeignKey("IdExams")]
+        [Display(Name = "Exames")]
         public virtual ExamsModel? ExamsModel { get; set; }
 
 

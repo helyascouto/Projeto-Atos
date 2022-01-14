@@ -1,7 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -10,7 +7,11 @@ namespace SistemaClinica.Models
     [Table("Patients")]
     public class PatientModel : AddressModel
     {
+#pragma warning disable CS8618 // O propriedade não anulável 'LastName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning disable CS8618 // O propriedade não anulável 'FistName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         public PatientModel()
+#pragma warning restore CS8618 // O propriedade não anulável 'FistName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+#pragma warning restore CS8618 // O propriedade não anulável 'LastName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         {
 
         }
@@ -39,34 +40,31 @@ namespace SistemaClinica.Models
         [Required(ErrorMessage = "O Nome é Obrigatório!")]
         [Display(Name = "Nome")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "Entre 3 a 20 Caracteres")]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage =
-            "Números e caracteres especiais não são permitidos no nome.")]
         public string FistName { get; set; }
 
         [Required(ErrorMessage = "O Nome é Obrigatório!")]
         [Display(Name = "Sobrenome")]
         [StringLength(40, MinimumLength = 3, ErrorMessage = "Entre 3 a 40 Caracteres")]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage =
-            "Números e caracteres especiais não são permitidos no Sobrenome.")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "O Data de Nascimento é Obrigatório!")]
         [Display(Name = "Data de Nascimento")]
         public DateTime DateBirth { get; set; }
 
-        [Display(Name = "Plano de Saude")]
+        [Display(Name = "Plano de Saúde")]
         public int? IdHealthPlan { get; set; }
 
         [ForeignKey("IdHealthPlan")]
-       // [Display(Name = "Plano de Saude")]
+        [Display(Name = "Plano de Saúde")]
         public virtual HealthPlanModel? HealthPlan { get; set; }
 
-        [Required(ErrorMessage = "A Empresa é Obrigatório!")]
         [Display(Name = "Empresa")]
+        [Required(ErrorMessage = "A Empresa é Obrigatório!")]
         public int IdCompany { get; set; }
 
 
         [ForeignKey("IdCompany")]
+        [Display(Name = "Empresa")]
         public virtual CompanyModel? Company { get; set; }
 
 
