@@ -7,11 +7,8 @@ namespace SistemaClinica.Models
     [Table("Doctor")]
     public class DoctorModel : AddressModel
     {
-#pragma warning disable CS8618 // O propriedade não anulável 'LastName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'FistName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         public DoctorModel()
-#pragma warning restore CS8618 // O propriedade não anulável 'FistName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'LastName' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+
         {
 
         }

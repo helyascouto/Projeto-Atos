@@ -9,29 +9,13 @@ namespace SistemaClinica.Models
     public abstract class AddressModel : EntityBaseModel
 
     {
-#pragma warning disable CS8618 // O propriedade não anulável 'District' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'ZipCod' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'Number' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'State' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'Email' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'City' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'Telephone' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning disable CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+
         public AddressModel()
-#pragma warning restore CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'Telephone' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'City' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'Email' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'State' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'Number' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'ZipCod' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
-#pragma warning restore CS8618 // O propriedade não anulável 'District' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
+
         {
 
         }
-#pragma warning disable CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         protected AddressModel(string telephone, string email, string zipCod, string number, string district, string city, string state)
-#pragma warning restore CS8618 // O propriedade não anulável 'Street' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         {
             Telephone = telephone;
             Email = email;

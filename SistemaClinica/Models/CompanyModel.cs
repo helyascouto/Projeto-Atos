@@ -7,9 +7,7 @@ namespace SistemaClinica.Models
     [Table("Company")]
     public class CompanyModel : AddressModel
     {
-#pragma warning disable CS8618 // O propriedade não anulável 'NameCompany' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         public CompanyModel()
-#pragma warning restore CS8618 // O propriedade não anulável 'NameCompany' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.
         {
 
         }
